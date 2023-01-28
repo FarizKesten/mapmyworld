@@ -193,6 +193,6 @@
     <material>Gazebo/Grey</material>
   </gazebo>
   <gazebo reference="chassis">
-    <material>Gazebo/Red</material>
+    <material>Gazebo/Green</material>
   </gazebo>
 </robot>
