@@ -178,7 +178,7 @@
     <inertial>
       <mass value="1e-5"/>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-      <inertia ixx="1e6" ixy="0.0" ixz="0.0" iyy="1e6" iyz="0.0" izz="1e6"/>
+      <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
     </inertial>
   </link>
 
