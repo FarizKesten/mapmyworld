@@ -14,7 +14,7 @@ ros::Publisher motor_command_publisher;
 bool handle_drive_request(ball_chaser::DriveToTarget::Request& req,
                           ball_chaser::DriveToTarget::Response& res)
 {
-    ROS_INFO("DriveToTargetRequest received - linear.x: %1.2f, angular.z: 1.2f",
+    ROS_INFO("DriveToTargetRequest received - linear.x: %1.2f, angular.z: %1.2f",
              (float)req.linear_x, (float)req.angular_z);
 
     geometry_msgs::Twist motor_command;
@@ -54,25 +54,6 @@ int main(int argc, char * argv[])
     // callback function
     ros::ServiceServer service;
     service = n.advertiseService("/ball_chaser/command_robot", handle_drive_request);
-
-
-    // TODO: Delete the loop, move the code to the inside of the callback function and
-    // make the necessary changes to publish the requested velocities instead of constant
-    // values
-    // while(ros::ok())
-    // {
-    //     //create a motor_command object of type geometry_msgs::Twist
-    //     geometry_msgs::Twist motor_command;
-
-    //     //Set wheel velocities, forward [0.5, 0.0]
-    //     motor_command.linear.x = 0.5;
-    //     motor_command.angular.z = 0.0;
-
-    //     // Publish angles to drive the robot
-    //     motor_command_publisher.publish(motor_command);
-    // }
-
-    // TODO: Handle ROS communication events
 
     ROS_INFO("Ready to send joint commands");
     ros::spin();

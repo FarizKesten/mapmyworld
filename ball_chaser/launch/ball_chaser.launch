@@ -1,5 +1,11 @@
-<<?xml version="1.0"?>
 <launch>
-    <!-- The driver_bot mode -->
-    <node name="drive_bot" pkg="ball_chaser" type="drive_bot" output="screen"/>
+    <node name="drive_bot"
+          type="drive_bot"
+          pkg="ball_chaser"
+          output="screen"/>
+
+    <node name="process_image"
+          type="process_image"
+          pkg="ball_chaser"
+          output="screen"/>
 </launch>
