@@ -6,7 +6,8 @@
     <!-- AMCL Node  -->
     <node name="amcl" pkg="amcl" type="amcl" output="screen">
         <!-- Remap scan topic to laser/scan -->
-        <remap from="scan" to="my_robot/laser/scan"/>
+        <!-- <remap from="scan" to="my_robot/laser/scan"/> -->
+        <remap from="scan" to="/scan"/>
 
         <!-- Odometry -->
         <!-- odom_frame_id (string, default: "odom"): Which frame to use for odometry -->
@@ -18,11 +19,13 @@
         <!-- global_frame_id (string, default: "map"): The name of the coordinate frame published by the localization system -->
         <param name="global_frame_id" value="map"/>
 
+        <param name="transform_tolerance" value="2"/>
         <!-- Pose -->
         <!-- Define initial poseof the robot -->
-        <param name="initial_pose_x" value="0"/>
-        <param name="initial_pose_y" value="0"/>
-    </node>
+        <param name="initial_pose_x" value="15.0"/>
+        <param name="initial_pose_y" value="15.0"/>
+        <param name="initial_pose_a" value="4.7"/>
+│    </node>
 
     <!-- Move Base -->
     <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
