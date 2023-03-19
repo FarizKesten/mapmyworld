@@ -5,7 +5,7 @@ Create pgm map from Gazebo world file for ROS localization
 Tested on Ubuntu 16.04, ROS Kinetic, Boost 1.58, [Protocol Buffers v2.6.1](https://github.com/protocolbuffers/protobuf/releases/tag/v2.6.1)
 
 Install Protocol Buffers v2.6.1
-- Download the zip file 
+- Download the zip file
 - Remove the previous protocol buffer version
 - `$ cd /usr/local/include/google`
 - `$ sudo rm -rf protobuf`
@@ -22,14 +22,21 @@ Install Protocol Buffers v2.6.1
   5. `$ sudo make install`
 
   6. `$ sudo ldconfig`
-  
+
+# Alternative installation:
+## installing protobuf:
+wget https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz
+tar -zxvf protobuf-2.6.1.tar.gz && cd protobuf-2.6.1/
+./configure
+make -j$(nproc) && make check
+make install
 ## Usage
 
 ### Add the package to your workspace
 1. Create a catkin workspace / Open the catkin workspace
 2. Clone the package to the src folder
 3. Comment the following lines in CMakeLists.txt in the msgs folder of pgm_map_creator and save it.(Edit it using gedit)
-``` 
+```
     #${PROTOBUF_IMPORT_DIRS}/vector2d.proto
     #${PROTOBUF_IMPORT_DIRS}/header.proto
     #${PROTOBUF_IMPORT_DIRS}/time.proto
@@ -43,7 +50,7 @@ Install Protocol Buffers v2.6.1
 
 ### Create the pgm map file
 1. Run `gazebo /home/jit/catkin_ws/src/pgm_map_creator/world/<map file>` with full path to the map and check if it opens correctly. If yes, the close it and follow the next steps.
-2. Run `source devel/setup.bash` in the following terminals before running the next commands to setup the environment variables 
+2. Run `source devel/setup.bash` in the following terminals before running the next commands to setup the environment variables
 3. Open a terminal, run gzerver with the map file (Enter the entire path to the map file)
 `gzserver /home/jit/catkin_ws/src/pgm_map_creator/world/<map file>`
 4. Open another terminal, launch the request_publisher node
