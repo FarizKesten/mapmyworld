@@ -1,7 +1,8 @@
  # Ball Chaser
 
-![Image](./images/my_robot_2.png)
+![Image](./images/gazebo.png)
 
+![Image](./images/rviz.png)
 ## Launching the project:
 
 ### first terminal:
@@ -13,5 +14,5 @@
 
 ### third terminal:
 `source devel/setup.bash`
-`roslaunch ball_chaser ball_chaser.launch`
+`roslaunch my_robot amcl.launch`
 

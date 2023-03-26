@@ -8,6 +8,46 @@
         <!-- Remap scan topic to laser/scan -->
         <!-- <remap from="scan" to="my_robot/laser/scan"/> -->
         <remap from="scan" to="/scan"/>
+        <!-- TODO:
+        - min_particles
+        - max_particles
+        - update_min_a
+        - update_min_d
+
+        - likelihood_field
+        - laser_max_beams
+        - laser_x_range
+        - laser_y_range
+        - laser_z_hit
+        - laser_z_rand -->
+
+        <!-- set the footprint radius-->
+        <param name="robot_radius" value="0.2"/>
+        <!-- min_particles (int, default: 100): Set the minimum number of particles -->
+        <param name="min_particles" value="30"/>
+        <!-- max_particles (int, default: 5000): Set the maximum number of particles -->
+        <param name="max_particles" value="300"/>
+        <!-- update_min_a (double, default: 0.2): Set the minimum angle change (radians) before a filter update -->
+        <param name="update_min_a" value="0.1"/>
+        <!-- update_min_d (double, default: 0.25): Set the minimum distance change (meters) before a filter update -->
+        <param name="update_min_d" value="0.25"/>
+
+        <!-- Laser configurations-->
+        <!-- laser_model_type (string, default: "likelihood_field"): Set the laser model type, either "beam" or "likelihood_field" -->
+        <param name="laser_model_type" value="likelihood_field"/>
+        <!-- laser_z_short (double, default: 0.05): Set the z-score for the short model -->
+        <param name="laser_z_short" value="0.05"/>
+        <!-- laser_max_beams (int, default: 30): Set the maximum number of beams to use -->
+        <param name="laser_max_beams" value="20"/>
+        <!-- laser_z_hit (double, default: 0.5): Set the z-score for the hit model -->
+        <param name="laser_z_hit" value="0.85"/>
+        <!-- laser_z_rand (double, default: 0.5): Set the z-score for the random model -->
+        <param name="laser_z_rand" value="0.5"/>
+        <!-- laser_sigma_hit (double, default: 0.2): Set the sigma for the hit model -->
+        <param name="laser_sigma_hit" value="0.2"/>
+        <!-- laser_likelihood_max_dist (double, default: 2.0): Set the maximum distance for the likelihood model -->
+        <param name="laser_likelihood_max_dist" value="5.0"/>
+
 
         <!-- Odometry -->
         <!-- odom_frame_id (string, default: "odom"): Which frame to use for odometry -->
@@ -18,6 +58,13 @@
         <param name="base_frame_id" value="robot_footprint"/>
         <!-- global_frame_id (string, default: "map"): The name of the coordinate frame published by the localization system -->
         <param name="global_frame_id" value="map"/>
+        <!-- set odom alphas-->
+        <param name="odom_alpha1" value="0.05"/>
+        <param name="odom_alpha2" value="0.05"/>
+        <param name="odom_alpha3" value="0.05"/>
+        <param name="odom_alpha4" value="0.05"/>
+
+
 
         <param name="transform_tolerance" value="2"/>
         <!-- Pose -->
@@ -30,7 +77,8 @@
     <!-- Move Base -->
     <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
         <!-- Remap scan topic to laser/scan -->
-        <remap from="scan" to="my_robot/laser/scan"/>
+        <remap from="scan" to="/scan"/>
+        <!-- <remap from="scan" to="my_robot/laser/scan"/> -->
 
         <param name="base_global_planner" value="navfn/NavfnROS" />
         <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
